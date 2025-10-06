@@ -14,6 +14,23 @@ class CoverView(arcade.View):
     def __init__(self, bg_color: tuple = (26, 26, 26)):
         super().__init__()
         self.background_color = bg_color
+        self.uimanager = arcade.gui.UIManager()
+        self.uimanager.enable()
+
+        self.v_box = arcade.gui.UIBoxLayout(space_between=20)
+
+        btn_comenzar = arcade.gui.UIFlatButton(text="Comenzar", width=300)
+        btn_comenzar.on_click = self.on_click_comenzar
+        self.v_box.add(btn_comenzar)
+
+        self.anchor_layout = arcade.gui.UIAnchorLayout()
+        self.anchor_layout.add(
+            child=self.v_box,
+            anchor_x="center_x",
+            anchor_y="center_y"
+        )
+
+        self.uimanager.add(self.anchor_layout)
 
         self.label0 = arcade.Text(
             "Naval Warfare",
@@ -25,15 +42,6 @@ class CoverView(arcade.View):
         )
 
         self.label1 = arcade.Text(
-            "Presiona ENTER para comenzar",
-            WINDOW_WIDTH / 2, (WINDOW_HEIGHT / 1.75),
-            color=arcade.color.WHITE,
-            font_size=25,
-            anchor_x="center",
-            anchor_y="center"
-        )
-
-        self.label2 = arcade.Text(
             "alonso",
             (WINDOW_WIDTH / 2) - 325, (WINDOW_HEIGHT / 1.25) + 60,
             color=arcade.color.WHITE,
@@ -42,7 +50,7 @@ class CoverView(arcade.View):
             anchor_y="center"
         )
 
-        self.label3 = arcade.Text(
+        self.label2 = arcade.Text(
             f"Ver: {VERSION}",
             (WINDOW_WIDTH / 2) + 265, (WINDOW_HEIGHT / 1.25) - 75,
             color=arcade.color.WHITE,
@@ -50,6 +58,12 @@ class CoverView(arcade.View):
             anchor_x="center",
             anchor_y="center"
         )
+
+    def on_click_comenzar(self, event: arcade.gui.UIOnClickEvent):
+        print("Botón comenzar fue clickeado")
+        menu_view = MenuView()
+        menu_view.setup()
+        self.window.show_view(menu_view)
 
     def setup(self):
         pass
@@ -59,10 +73,10 @@ class CoverView(arcade.View):
 
     def on_draw(self):
         self.clear()
+        self.uimanager.draw()
         self.label0.draw()
         self.label1.draw()
         self.label2.draw()
-        self.label3.draw()
 
     def on_key_press(self, key, modifiers):
         if key == arcade.key.ENTER:
