@@ -1,8 +1,6 @@
 import arcade
-import arcade.gui
 import config
 from scenes.CoverView import CoverView
-from scenes.MenuView import MenuView
 
 def main():
     window = arcade.Window(config.WINDOW_WIDTH, config.WINDOW_HEIGHT, config.WINDOW_TITLE)

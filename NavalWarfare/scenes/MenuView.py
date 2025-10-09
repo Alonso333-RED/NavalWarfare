@@ -8,7 +8,7 @@ WINDOW_TITLE = config.WINDOW_TITLE
 VERSION = config.VERSION
 
 class MenuView(arcade.View):
-    def __init__(self, bg_color: tuple = (26, 26, 26)):
+    def __init__(self, bg_color: tuple = (26, 26, 64)):
         super().__init__()
         self.background_color = bg_color
 
@@ -16,16 +16,16 @@ class MenuView(arcade.View):
             "Menu Principal",
             WINDOW_WIDTH / 2, (WINDOW_HEIGHT / 1.25),
             color=arcade.color.WHITE,
-            font_size=100,
+            font_size=75,
             anchor_x="center",
             anchor_y="center"
         )
 
         self.label1 = arcade.Text(
             f"Naval Warfare, ({VERSION}) por Alonso",
-            (WINDOW_WIDTH / 2) - 225, (WINDOW_HEIGHT / 2) - 350,
+            (WINDOW_WIDTH / 2) - 260, (WINDOW_HEIGHT / 2) - 240,
             color=arcade.color.WHITE,
-            font_size=25,
+            font_size=10,
             anchor_x="center",
             anchor_y="center"
         )
