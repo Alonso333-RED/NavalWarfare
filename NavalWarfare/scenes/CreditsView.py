@@ -8,9 +8,10 @@ WINDOW_TITLE = config.WINDOW_TITLE
 VERSION = config.VERSION
 
 class CreditsView(arcade.View):
-    def __init__(self, bg_color: tuple = (26, 26, 64)):
+    def __init__(self, bg_color: tuple = (26, 26, 64), cover_imgs=None):
         super().__init__()
         self.background_color = bg_color
+        self.cover_imgs = cover_imgs
         self.uimanager = arcade.gui.UIManager()
         self.uimanager.enable()
 
@@ -35,19 +36,24 @@ class CreditsView(arcade.View):
 
         self.uimanager.add(self.anchor_layout)
 
-    def on_click_volver(self, event: arcade.gui.UIOnClickEvent):
-        print("Clicked: volver_btn")
-        from scenes.CoverView import CoverView
-        cover_view = CoverView()
-        cover_view.setup()
-        self.window.show_view(cover_view)
-
+        self.sprite_list = arcade.SpriteList()
+        self.cover_imgs.center_x = (WINDOW_WIDTH / 2)
+        self.cover_imgs.center_y = (WINDOW_HEIGHT / 2)
+        self.cover_imgs.scale = 1
+        self.sprite_list.append(self.cover_imgs)
+        
+    
     def setup(self):
         pass
 
-    def on_show_view(self):
-        arcade.set_background_color(self.background_color)
-
     def on_draw(self):
         self.clear()
+        self.sprite_list.draw()
         self.uimanager.draw()
+
+    def on_click_volver(self, event: arcade.gui.UIOnClickEvent):
+        print("Clicked: volver_btn")
+        from scenes.CoverView import CoverView
+        cover_view = CoverView(cover_imgs=self.cover_imgs)
+        cover_view.setup()
+        self.window.show_view(cover_view)

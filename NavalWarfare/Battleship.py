@@ -1,8 +1,8 @@
 class Battleship:
     def __init__(self, name: str, max_integrity: int, armor: int, max_damage: int,
-                 min_damage_factor: float, penetration: int, acurrancy: int,
-                 max_speed: int, acelleration: float, desacelleration: float,
-                 ammo_storage: int, reload: int, repair: float):
+                 min_damage_factor: float, penetration: int, acurrancy: int, max_speed: int, 
+                 acelleration: float, desacelleration: float, ammo_storage: int, reload: int, 
+                 repair: float, default_sprite: str, damaged_sprite: str, repaired_sprite):
         self.name = name
         self.max_integrity = max_integrity
         self.current_integrity = max_integrity
@@ -19,12 +19,15 @@ class Battleship:
         self.current_ammo = 0
         self.reload = reload
         self.repair = repair
+        self.default_sprite = default_sprite
+        self.damaged_sprite = damaged_sprite
+        self.repaired_sprite = repaired_sprite
         
     def get_stats(self):
         printing = []
         printing.append(f"--- {self.name} ---\n")
         printing.append(f"Integridad: {self.current_integrity}/{self.max_integrity}\n")
-        printing.append(f"Armadura: {self.armor}\n")
+        printing.append(f"Blindaje: {self.armor}\n")
         printing.append(f"Daño máximo: {self.max_damage}\n")
         printing.append(f"Daño mínimo: {int(self.max_damage * self.min_damage_factor)}\n")
         printing.append(f"Penetración: {self.penetration}\n")
