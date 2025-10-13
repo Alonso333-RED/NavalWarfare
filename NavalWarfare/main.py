@@ -1,6 +1,6 @@
 import arcade
 import config
-from scenes.CoverView import CoverView
+from scenes.pre_game.CoverView import CoverView
 
 def main():
     window = arcade.Window(config.WINDOW_WIDTH, config.WINDOW_HEIGHT, config.WINDOW_TITLE)
