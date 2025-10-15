@@ -56,7 +56,7 @@ class MenuView(arcade.View):
 
         self.label1 = arcade.Text(
             f"Naval Warfare, ({VERSION}) por Alonso",
-            (WINDOW_WIDTH / 2) - 260, (WINDOW_HEIGHT / 2) + 240,
+            (WINDOW_WIDTH / 2) - 240, (WINDOW_HEIGHT / 2) + 240,
             color=arcade.color.WHITE,
             font_size=10,
             anchor_x="center",

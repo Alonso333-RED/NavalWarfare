@@ -48,7 +48,7 @@ class CoverView(arcade.View):
         # Inicializando Sistema de Sprites
         self.sprite_list = arcade.SpriteList()
         if self.cover_imgs is None:
-            self.cover_imgs = arcade.Sprite(general_utils.get_random_image("NavalWarfare/images/cover"))
+            self.cover_imgs = arcade.Sprite(general_utils.get_random_image("NavalWarfare/images/cover_images"))
             self.cover_imgs.center_x = (WINDOW_WIDTH / 2)
             self.cover_imgs.center_y = (WINDOW_HEIGHT / 2)
             self.cover_imgs.scale = 1
