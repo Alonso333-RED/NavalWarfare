@@ -1,0 +1,18 @@
+{
+    "acelleration": 6,
+    "acurrancy": 37,
+    "ammo_storage": 12,
+    "bullets_per_reload": 1,
+    "bullets_per_shot": 3,
+    "damaged_sprite": "NavalWarfare/images/ships_sprites/IJNyamato_damaged.png",
+    "default_sprite": "NavalWarfare/images/ships_sprites/IJNyamato_default.png",
+    "desacelleration": 1,
+    "max_damage": 2500,
+    "max_integrity": 9500,
+    "max_speed": 51,
+    "min_damage_factor": 0.25,
+    "name": "Sovereign",
+    "reload_time": 6,
+    "repair": 1150,
+    "repaired_sprite": "NavalWarfare/images/ships_sprites/IJNyamato_repaired.png"
+}

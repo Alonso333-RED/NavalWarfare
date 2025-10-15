@@ -1,5 +1,7 @@
 import random
 import os
+import json
+from Warship import Warship
 
 def random_rgb():
     return (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
@@ -32,3 +34,19 @@ def get_random_image(folder):
         return random.choice(images)
     else:
         return None
+    
+def store_warship(warship: Warship):
+    file_name = f"main_content/warships_storage/{warship.name.replace(' ', '_').lower()}.json"
+    with open(file_name, "w", encoding="utf-8") as warships_storage:
+        json.dump(warship.to_dict(), warships_storage, indent=4, sort_keys=True, ensure_ascii=False)
+
+def load_warship(name: str) -> Warship:
+    file_name = f"main_content/warships_storage/{name.replace(' ', '_').lower()}.json"
+
+    if not os.path.exists(file_name):
+        raise FileNotFoundError(f"No se encontró el archivo para el barco '{name}'.")
+    
+    with open(file_name, "r", encoding="utf-8") as warships_storage:
+        data = json.load(warships_storage)
+    
+    return Warship(**data)
