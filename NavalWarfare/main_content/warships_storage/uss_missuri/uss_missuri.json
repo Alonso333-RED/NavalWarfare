@@ -1,0 +1,18 @@
+{
+    "acelleration": 12,
+    "acurrancy": 42,
+    "ammo_storage": 12,
+    "bullets_per_reload": 1,
+    "bullets_per_shot": 3,
+    "damaged_sprite": "NavalWarfare/main_content/warships_storage/uss_missuri/uss_missuri_damaged.png",
+    "default_sprite": "NavalWarfare/main_content/warships_storage/uss_missuri/uss_missuri_default.png",
+    "desacelleration": 6,
+    "max_damage": 1218,
+    "max_integrity": 8923,
+    "max_speed": 60,
+    "min_damage_factor": 0.33,
+    "name": "USS Missuri",
+    "reload_time": 3,
+    "repair": 330,
+    "repaired_sprite": "NavalWarfare/main_content/warships_storage/uss_missuri/uss_missuri_repaired.png"
+}

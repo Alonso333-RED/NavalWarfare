@@ -1,0 +1,18 @@
+{
+    "acelleration": 8,
+    "acurrancy": 42,
+    "ammo_storage": 12,
+    "bullets_per_reload": 1,
+    "bullets_per_shot": 3,
+    "damaged_sprite": "NavalWarfare/main_content/warships_storage/ijn_yamato/ijn_yamato_damaged.png",
+    "default_sprite": "NavalWarfare/main_content/warships_storage/ijn_yamato/ijn_yamato_default.png",
+    "desacelleration": 4,
+    "max_damage": 1380,
+    "max_integrity": 10231,
+    "max_speed": 50,
+    "min_damage_factor": 0.33,
+    "name": "IJN Yamato",
+    "reload_time": 4,
+    "repair": 317,
+    "repaired_sprite": "NavalWarfare/main_content/warships_storage/ijn_yamato/ijn_yamato_repaired.png"
+}

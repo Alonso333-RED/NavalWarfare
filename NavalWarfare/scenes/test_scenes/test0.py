@@ -1,6 +1,7 @@
 import arcade
 import arcade.gui
 import config
+from utils import storage_utils
 
 WINDOW_WIDTH = config.WINDOW_WIDTH
 WINDOW_HEIGHT = config.WINDOW_HEIGHT
@@ -43,17 +44,20 @@ class Test0(arcade.View):
         self.sprite_list.append(self.cover_imgs)
 
         #load yamato sprite
-        self.yamato_sprite_default = arcade.Sprite("NavalWarfare/images/ships_sprites/IJNyamato_default.png", scale=0.25)
+        self.ijnYamato = storage_utils.load_warship("ijn_yamato")
+        self.kmsBismarck = storage_utils.load_warship("kms_bismarck")
+        self.fsRichelieu = storage_utils.load_warship("fs_richelieu")
+        self.yamato_sprite_default = arcade.Sprite(storage_utils.load_file(f"{self.ijnYamato.default_sprite}"), scale=0.25)
         self.yamato_sprite_default.center_x = WINDOW_WIDTH // 2
         self.yamato_sprite_default.center_y = (WINDOW_HEIGHT // 2)
         self.sprite_list.append(self.yamato_sprite_default)
 
-        self.yamato_sprite_damaged = arcade.Sprite("NavalWarfare/images/ships_sprites/IJNyamato_damaged.png", scale=0.25)
+        self.yamato_sprite_damaged = arcade.Sprite(storage_utils.load_file(f"{self.kmsBismarck.damaged_sprite}"), scale=0.25)
         self.yamato_sprite_damaged.center_x = WINDOW_WIDTH // 2
         self.yamato_sprite_damaged.center_y = (WINDOW_HEIGHT // 2) + 125
         self.sprite_list.append(self.yamato_sprite_damaged)
 
-        self.yamato_sprite_repaired = arcade.Sprite("NavalWarfare/images/ships_sprites/IJNyamato_repaired.png", scale=0.25)
+        self.yamato_sprite_repaired = arcade.Sprite(storage_utils.load_file(f"{self.fsRichelieu.repaired_sprite}"), scale=0.25)
         self.yamato_sprite_repaired.center_x = WINDOW_WIDTH // 2
         self.yamato_sprite_repaired.center_y = (WINDOW_HEIGHT // 2) - 125
         self.sprite_list.append(self.yamato_sprite_repaired)
@@ -68,8 +72,9 @@ class Test0(arcade.View):
 
     def on_click_volver(self, event: arcade.gui.UIOnClickEvent):
         print("Clicked: volver_btn")
-        arcade.play_sound(arcade.load_sound("NavalWarfare/sounds/button_sound1.mp3"))
-        from scenes.pre_game.CoverView import CoverView
-        cover_view = CoverView(cover_imgs=self.cover_imgs)
-        cover_view.setup()
-        self.window.show_view(cover_view)
+        storage_utils.execute_sound("button_sound1.mp3")
+        self.uimanager.clear()
+        from scenes.pre_game.MenuView import MenuView
+        menu_view = MenuView(cover_imgs=self.cover_imgs)
+        menu_view.setup()
+        self.window.show_view(menu_view)

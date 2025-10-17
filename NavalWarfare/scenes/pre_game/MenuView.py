@@ -1,6 +1,7 @@
 import arcade
 import arcade.gui
 import config
+from utils import storage_utils
 
 WINDOW_WIDTH = config.WINDOW_WIDTH
 WINDOW_HEIGHT = config.WINDOW_HEIGHT
@@ -17,9 +18,13 @@ class MenuView(arcade.View):
         self.v_box = arcade.gui.UIBoxLayout(space_between=20)
 
         # Botones
-        btn_jugar = arcade.gui.UIFlatButton(text="Comenzar", width=500, height=25)
+        btn_jugar = arcade.gui.UIFlatButton(text="Jugar", width=500, height=25)
         btn_jugar.on_click = self.on_click_jugar
         self.v_box.add(btn_jugar)
+
+        btn_select_ship = arcade.gui.UIFlatButton(text="Seleccionar Buque", width=500, height=25)
+        btn_select_ship.on_click = self.on_click_select_ship
+        self.v_box.add(btn_select_ship)
 
         btn_volver = arcade.gui.UIFlatButton(text="Volver", width=500, height=25)
         btn_volver.on_click = self.on_click_volver
@@ -76,15 +81,26 @@ class MenuView(arcade.View):
     # Funciones de Botones
     def on_click_jugar(self, event: arcade.gui.UIOnClickEvent):
         print("Clicked: jugar_btn")
-        arcade.play_sound(arcade.load_sound("NavalWarfare/sounds/button_sound0.mp3"))
+        storage_utils.execute_sound("button_sound0.mp3")
+        self.uimanager.clear()
         from scenes.pre_game.CoverView import CoverView
         cover_view = CoverView(cover_imgs=self.cover_imgs)
         cover_view.setup()
         self.window.show_view(cover_view)
 
+    def on_click_select_ship(self, event: arcade.gui.UIOnClickEvent):
+        print("Clicked: select_ship_btn")
+        storage_utils.execute_sound("button_sound0.mp3")
+        self.uimanager.clear()
+        from scenes.pre_game.selectShipView import selecShipView
+        select_ship_view = selecShipView(cover_imgs=self.cover_imgs)
+        select_ship_view.setup()
+        self.window.show_view(select_ship_view)
+
     def on_click_volver(self, event: arcade.gui.UIOnClickEvent):
         print("Clicked: volver_btn")
-        arcade.play_sound(arcade.load_sound("NavalWarfare/sounds/button_sound1.mp3"))
+        storage_utils.execute_sound("button_sound1.mp3")
+        self.uimanager.clear()
         from scenes.pre_game.CoverView import CoverView
         cover_view = CoverView(cover_imgs=self.cover_imgs)
         cover_view.setup()
@@ -92,7 +108,8 @@ class MenuView(arcade.View):
 
     def on_click_test0(self, event: arcade.gui.UIOnClickEvent):
         print("Clicked: test0_btn")
-        arcade.play_sound(arcade.load_sound("NavalWarfare/sounds/button_sound0.mp3"))
+        storage_utils.execute_sound("button_sound0.mp3")
+        self.uimanager.clear()
         from scenes.test_scenes.test0 import Test0
         test0_view = Test0(cover_imgs=self.cover_imgs)
         test0_view.setup()

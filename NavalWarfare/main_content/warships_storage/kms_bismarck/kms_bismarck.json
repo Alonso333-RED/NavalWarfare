@@ -1,0 +1,18 @@
+{
+    "acelleration": 11,
+    "acurrancy": 37,
+    "ammo_storage": 8,
+    "bullets_per_reload": 1,
+    "bullets_per_shot": 2,
+    "damaged_sprite": "NavalWarfare/main_content/warships_storage/kms_bismarck/kms_bismarck_damaged.png",
+    "default_sprite": "NavalWarfare/main_content/warships_storage/kms_bismarck/kms_bismarck_default.png",
+    "desacelleration": 6,
+    "max_damage": 760,
+    "max_integrity": 8698,
+    "max_speed": 56,
+    "min_damage_factor": 0.5,
+    "name": "KMS Bismarck",
+    "reload_time": 3,
+    "repair": 421,
+    "repaired_sprite": "NavalWarfare/main_content/warships_storage/kms_bismarck/kms_bismarck_repaired.png"
+}

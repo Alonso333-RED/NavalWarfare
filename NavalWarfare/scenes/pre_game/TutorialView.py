@@ -1,6 +1,7 @@
 import arcade
 import arcade.gui
 import config
+from utils import storage_utils
 
 WINDOW_WIDTH = config.WINDOW_WIDTH
 WINDOW_HEIGHT = config.WINDOW_HEIGHT
@@ -50,7 +51,8 @@ class TutorialView(arcade.View):
 
     def on_click_volver(self, event: arcade.gui.UIOnClickEvent):
         print("Clicked: volver_btn")
-        arcade.play_sound(arcade.load_sound("NavalWarfare/sounds/button_sound1.mp3"))
+        storage_utils.execute_sound("button_sound1.mp3")
+        self.uimanager.clear()
         from scenes.pre_game.CoverView import CoverView
         cover_view = CoverView(cover_imgs=self.cover_imgs)
         cover_view.setup()

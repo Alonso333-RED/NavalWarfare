@@ -1,7 +1,7 @@
 import time
 import arcade
 import arcade.gui
-from utils import general_utils
+from utils import storage_utils
 import config
 
 
@@ -48,7 +48,7 @@ class CoverView(arcade.View):
         # Inicializando Sistema de Sprites
         self.sprite_list = arcade.SpriteList()
         if self.cover_imgs is None:
-            self.cover_imgs = arcade.Sprite(general_utils.get_random_image("NavalWarfare/images/cover_images"))
+            self.cover_imgs = arcade.Sprite(storage_utils.get_random_image("NavalWarfare/images/cover_images"))
             self.cover_imgs.center_x = (WINDOW_WIDTH / 2)
             self.cover_imgs.center_y = (WINDOW_HEIGHT / 2)
             self.cover_imgs.scale = 1
@@ -101,17 +101,17 @@ class CoverView(arcade.View):
     # Funciones de Botones
     def on_click_comenzar(self, event: arcade.gui.UIOnClickEvent):
         print("Clicked: comenzar_btn")
+        storage_utils.execute_sound("button_sound0.mp3")
         from scenes.pre_game.MenuView import MenuView
         self.uimanager.clear()
-        arcade.play_sound(arcade.load_sound("NavalWarfare/sounds/button_sound0.mp3"))
         menu_view = MenuView(cover_imgs=self.cover_imgs)
         menu_view.setup()
         self.window.show_view(menu_view)
 
     def on_click_tutorial(self, event: arcade.gui.UIOnClickEvent):
         print("Clicked: tutorial_btn")
+        storage_utils.execute_sound("button_sound0.mp3")
         from scenes.pre_game.TutorialView import TutorialView
-        arcade.play_sound(arcade.load_sound("NavalWarfare/sounds/button_sound0.mp3"))
         self.uimanager.clear()
         tutorial_view = TutorialView(cover_imgs=self.cover_imgs)
         tutorial_view.setup()
@@ -119,8 +119,8 @@ class CoverView(arcade.View):
 
     def on_click_creditos(self, event: arcade.gui.UIOnClickEvent):
         print("Clicked: creditos_btn")
+        storage_utils.execute_sound("button_sound0.mp3")
         from scenes.pre_game.CreditsView import CreditsView
-        arcade.play_sound(arcade.load_sound("NavalWarfare/sounds/button_sound1.mp3"))
         self.uimanager.clear()
         credits_view = CreditsView(cover_imgs=self.cover_imgs)
         credits_view.setup()
@@ -128,7 +128,8 @@ class CoverView(arcade.View):
 
     def on_click_salir(self, event: arcade.gui.UIOnClickEvent):
         print("Clicked: salir_btn")
-        arcade.play_sound(arcade.load_sound("NavalWarfare/sounds/button_sound1.mp3"))
+        storage_utils.execute_sound("button_sound1.mp3")
+        self.uimanager.clear()
         time.sleep(1)
         arcade.exit()
         exit()

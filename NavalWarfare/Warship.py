@@ -2,7 +2,7 @@ class Warship:
     def __init__(self, name: str, max_integrity: int, max_damage: int, min_damage_factor: float,
                 acurrancy: int, max_speed: int, acelleration: int, desacelleration: int,
                 ammo_storage: int, reload_time: int, bullets_per_shot: int, bullets_per_reload: int,
-                repair: int, default_sprite: str, damaged_sprite: str, repaired_sprite: str):
+                repair: int, default_sprite: str, damaged_sprite: str = None, repaired_sprite: str = None):
         self.name = name
         self.max_integrity = max_integrity
         self.current_integrity = max_integrity
@@ -20,7 +20,7 @@ class Warship:
         self.current_reload = 0
         self.bullets_per_shot = bullets_per_shot
         self.bullets_per_reload = bullets_per_reload
-        self.repair = repair
+        self.repair = repair # 100(Integriity) / tripulation
         self.default_sprite = default_sprite
         self.damaged_sprite = damaged_sprite
         self.repaired_sprite = repaired_sprite
