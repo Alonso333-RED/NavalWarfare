@@ -1,3 +1,4 @@
+import random
 import arcade
 from arcade.gui import UIManager, UIDropdown, UIAnchorLayout, UIOnChangeEvent
 import config
@@ -36,20 +37,27 @@ class selecShipView(arcade.View):
 
         self.uimanager.add(self.anchor_volver_btn)
 
-        self.sprite_list = arcade.SpriteList()
+        self.sprite_list0 = arcade.SpriteList()
         self.cover_imgs.center_x = (WINDOW_WIDTH / 2)
         self.cover_imgs.center_y = (WINDOW_HEIGHT / 2)
         self.cover_imgs.scale = 1
-        self.sprite_list.append(self.cover_imgs)
+        self.sprite_list0.append(self.cover_imgs)
 
+        self.sprite_list1 = arcade.SpriteList()
         all_warships = storage_utils.load_all_warships()
+        self.selecting_ship = random.choice(all_warships)
+        self.some_sprite = arcade.Sprite(storage_utils.load_file(f"{self.selecting_ship.default_sprite}"), scale=1)
+        self.some_sprite.center_x = WINDOW_WIDTH // 2
+        self.some_sprite.center_y = (WINDOW_HEIGHT // 2)
+        self.sprite_list1.append(self.some_sprite)
 
     def setup(self):
         pass
 
     def on_draw(self):
         self.clear()
-        self.sprite_list.draw()
+        self.sprite_list0.draw()
+        self.sprite_list1.draw()
         self.uimanager.draw()
 
     def on_click_volver(self, event: arcade.gui.UIOnClickEvent):

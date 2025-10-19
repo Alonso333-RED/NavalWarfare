@@ -106,12 +106,22 @@ def load_warship(name: str) -> Warship:
 
 
 def load_all_warships():
+    warships = []
     warships_storage_dir = get_relative_path("NavalWarfare/main_content/warships_storage")
 
-    warships = []
-    for file_name in os.listdir(warships_storage_dir):
-        if file_name.endswith(".json"):
-            warship = load_warship(file_name[:-5])
-            warships.append(warship)
+    if not os.path.exists(warships_storage_dir):
+        raise FileNotFoundError(f"No se encontró la carpeta de almacenamiento de barcos en {warships_storage_dir}")
 
+    for folder_name in os.listdir(warships_storage_dir):
+        warship_folder = os.path.join(warships_storage_dir, folder_name)
+        if os.path.isdir(warship_folder):
+            warship_file_path = os.path.join(warship_folder, f"{folder_name}.json")
+            if os.path.isfile(warship_file_path):
+                with open(warship_file_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    warship = Warship(**data)
+                    warships.append(warship)
+            else:
+                print(f"Advertencia: No se encontró el archivo JSON para el barco en {warship_file_path}")
+    
     return warships
