@@ -4,23 +4,23 @@ class Warship:
                 ammo_storage: int, reload_time: int, bullets_per_shot: int, bullets_per_reload: int,
                 repair: int, default_sprite: str, damaged_sprite: str = None, repaired_sprite: str = None):
         self.name = name
-        self.max_integrity = max_integrity
+        self.max_integrity = max_integrity # (Lenght * Sleeve)/class_asc{+1.5}
         self.current_integrity = max_integrity
-        self.max_damage = max_damage
-        self.min_damage_factor = min_damage_factor
+        self.max_damage = max_damage #((caliber_cannon{mm})*turret_cannons)
+        self.min_damage_factor = min_damage_factor #1/turret_cannons
         self.min_damage = min(round(max_damage * max(0, min(1, min_damage_factor))), max_damage)
-        self.acurrancy = acurrancy
-        self.max_speed = max_speed
+        self.acurrancy = acurrancy #Weapon_max_range{km}
+        self.max_speed = max_speed #(km/h)/class_asc{+0.5}
         self.current_speed = 0
-        self.acelleration = acelleration
-        self.desacelleration = desacelleration
-        self.ammo_storage = ammo_storage
+        self.acelleration = acelleration #original_max-speed/(class_acs+3)
+        self.desacelleration = desacelleration #acceleration/(class__decs{-0.5})
+        self.ammo_storage = ammo_storage #total_cannons
         self.current_ammo = 0
-        self.reload_time = reload_time
+        self.reload_time = reload_time #{real-life}/10
         self.current_reload = 0
-        self.bullets_per_shot = bullets_per_shot
+        self.bullets_per_shot = bullets_per_shot #per_turret
         self.bullets_per_reload = bullets_per_reload
-        self.repair = repair # 100(Integriity) / tripulation
+        self.repair = repair # (100*original_integrtity)/tripulation)/class_desc
         self.default_sprite = default_sprite
         self.damaged_sprite = damaged_sprite
         self.repaired_sprite = repaired_sprite

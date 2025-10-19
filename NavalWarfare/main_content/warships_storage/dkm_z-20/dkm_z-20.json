@@ -1,0 +1,18 @@
+{
+    "acelleration": 17,
+    "acurrancy": 8,
+    "ammo_storage": 5,
+    "bullets_per_reload": 3,
+    "bullets_per_shot": 1,
+    "damaged_sprite": "NavalWarfare/main_content/warships_storage/dkm_z-20/dkm_z-20_damaged.png",
+    "default_sprite": "NavalWarfare/main_content/warships_storage/dkm_z-20/dkm_z-20_default.png",
+    "desacelleration": 6,
+    "max_damage": 127,
+    "max_integrity": 1476,
+    "max_speed": 67,
+    "min_damage_factor": 1,
+    "name": "DKM Z-20",
+    "reload_time": 1,
+    "repair": 152,
+    "repaired_sprite": "NavalWarfare/main_content/warships_storage/dkm_z-20/dkm_z-20_repaired.png"
+}

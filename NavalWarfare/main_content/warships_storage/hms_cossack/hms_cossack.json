@@ -1,0 +1,18 @@
+{
+    "acelleration": 17,
+    "acurrancy": 12,
+    "ammo_storage": 8,
+    "bullets_per_reload": 1,
+    "bullets_per_shot": 2,
+    "damaged_sprite": "NavalWarfare/main_content/warships_storage/hms_cossack/hms_cossack_damaged.png",
+    "default_sprite": "NavalWarfare/main_content/warships_storage/hms_cossack/hms_cossack_default.png",
+    "desacelleration": 6,
+    "max_damage": 240,
+    "max_integrity": 1279,
+    "max_speed": 67,
+    "min_damage_factor": 0.5,
+    "name": "HMS Cossack",
+    "reload_time": 1,
+    "repair": 224,
+    "repaired_sprite": "NavalWarfare/main_content/warships_storage/hms_cossack/hms_cossack_repaired.png"
+}

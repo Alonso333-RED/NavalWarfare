@@ -44,7 +44,7 @@ class Test0(arcade.View):
         self.sprite_list.append(self.cover_imgs)
 
         #load yamato sprite
-        self.ijnYamato = storage_utils.load_warship("ijn_yamato")
+        self.ijnYamato = storage_utils.load_warship("uss_missouri")
         self.kmsBismarck = storage_utils.load_warship("kms_bismarck")
         self.fsRichelieu = storage_utils.load_warship("fs_richelieu")
         self.yamato_sprite_default = arcade.Sprite(storage_utils.load_file(f"{self.ijnYamato.default_sprite}"), scale=0.25)

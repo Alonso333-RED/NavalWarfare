@@ -1,0 +1,18 @@
+{
+    "acelleration": 17,
+    "acurrancy": 16,
+    "ammo_storage": 5,
+    "bullets_per_reload": 1,
+    "bullets_per_shot": 1,
+    "damaged_sprite": "NavalWarfare/main_content/warships_storage/uss_fletcher/uss_fletcher_damaged.png",
+    "default_sprite": "NavalWarfare/main_content/warships_storage/uss_fletcher/uss_fletcher_default.png",
+    "desacelleration": 6,
+    "max_damage": 127,
+    "max_integrity": 1387,
+    "max_speed": 67,
+    "min_damage_factor": 1,
+    "name": "USS Fletcher",
+    "reload_time": 1,
+    "repair": 169,
+    "repaired_sprite": "NavalWarfare/main_content/warships_storage/uss_fletcher/uss_fletcher_repaired.png"
+}

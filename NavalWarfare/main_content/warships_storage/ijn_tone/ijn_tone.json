@@ -1,0 +1,18 @@
+{
+    "acelleration": 13,
+    "acurrancy": 16,
+    "ammo_storage": 8,
+    "bullets_per_reload": 2,
+    "bullets_per_shot": 2,
+    "damaged_sprite": "NavalWarfare/main_content/warships_storage/ijn_tone/ijn_tone_damaged.png",
+    "default_sprite": "NavalWarfare/main_content/warships_storage/ijn_tone/ijn_tone_default.png",
+    "desacelleration": 5,
+    "max_damage": 406,
+    "max_integrity": 1467,
+    "max_speed": 43,
+    "min_damage_factor": 0.5,
+    "name": "IJN Tone",
+    "reload_time": 2,
+    "repair": 210,
+    "repaired_sprite": "NavalWarfare/main_content/warships_storage/ijn_tone/ijn_tone_repaired.png"
+}

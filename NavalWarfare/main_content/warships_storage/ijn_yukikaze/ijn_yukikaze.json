@@ -1,0 +1,18 @@
+{
+    "acelleration": 16,
+    "acurrancy": 23,
+    "ammo_storage": 4,
+    "bullets_per_reload": 1,
+    "bullets_per_shot": 2,
+    "damaged_sprite": "NavalWarfare/main_content/warships_storage/ijn_yukikaze/ijn_yukikaze_damaged.png",
+    "default_sprite": "NavalWarfare/main_content/warships_storage/ijn_yukikaze/ijn_yukikaze_default.png",
+    "desacelleration": 5,
+    "max_damage": 254,
+    "max_integrity": 1280,
+    "max_speed": 65,
+    "min_damage_factor": 0.5,
+    "name": "IJN Yukikaze",
+    "reload_time": 2,
+    "repair": 178,
+    "repaired_sprite": "NavalWarfare/main_content/warships_storage/ijn_yukikaze/ijn_yukikaze_repaired.png"
+}
