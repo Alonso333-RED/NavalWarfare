@@ -9,7 +9,7 @@
     "desacelleration": 4,
     "max_damage": 1380,
     "max_integrity": 2558,
-    "max_speed": 50,
+    "max_speed": 25,
     "min_damage_factor": 0.33,
     "name": "IJN Yamato",
     "reload_time": 4,

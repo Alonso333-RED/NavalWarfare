@@ -9,7 +9,7 @@
     "desacelleration": 5,
     "max_damage": 1218,
     "max_integrity": 2231,
-    "max_speed": 60,
+    "max_speed": 30,
     "min_damage_factor": 0.33,
     "name": "USS Missouri",
     "reload_time": 3,

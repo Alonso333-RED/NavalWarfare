@@ -1,7 +1,5 @@
 import arcade
 import config
-from utils import storage_utils
-from utils import image_utils
 from Warship import Warship
 from scenes.pre_game.CoverView import CoverView
 

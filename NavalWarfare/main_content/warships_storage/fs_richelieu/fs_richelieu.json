@@ -9,7 +9,7 @@
     "desacelleration": 5,
     "max_damage": 1520,
     "max_integrity": 2050,
-    "max_speed": 59,
+    "max_speed": 30,
     "min_damage_factor": 0.25,
     "name": "FS Richelieu",
     "reload_time": 3,

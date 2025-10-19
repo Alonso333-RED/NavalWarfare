@@ -9,7 +9,7 @@
     "desacelleration": 5,
     "max_damage": 760,
     "max_integrity": 2259,
-    "max_speed": 56,
+    "max_speed": 28,
     "min_damage_factor": 0.5,
     "name": "KMS Bismarck",
     "reload_time": 3,
