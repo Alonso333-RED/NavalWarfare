@@ -75,14 +75,22 @@ class PlayerTurnView(arcade.View):
         print("Clicked: atacar_btn")
         if self.player.warship.current_ammo == 0:
             storage_utils.execute_sound("weapon_empty.mp3")
+            print(f"{self.player.warship.current_ammo}/{self.player.warship.ammo_storage}")
             return
         storage_utils.execute_sound("weapon_shoot.mp3")
-        self.player.warship.current_ammo -= 1
+        self.player.warship.current_ammo -= self.player.warship.bullets_per_shot
+        print(f"{self.player.warship.current_ammo}/{self.player.warship.ammo_storage}")
 
     def on_click_recargar(self, event: arcade.gui.UIOnClickEvent):
         print("Clicked: recargar_btn")
+        if self.player.warship.current_ammo >= self.player.warship.ammo_storage:
+            self.player.warship.current_ammo = self.player.warship.ammo_storage
+            storage_utils.execute_sound("button_sound1.mp3")
+            print(f"{self.player.warship.current_ammo}/{self.player.warship.ammo_storage}")
+            return
+        self.player.warship.current_ammo += self.player.warship.bullets_per_reload
         storage_utils.execute_sound("weapon_reload.mp3")
-        self.player.warship.current_ammo += 1
+        print(f"{self.player.warship.current_ammo}/{self.player.warship.ammo_storage}")
 
     def on_click_acelerar(self, event: arcade.gui.UIOnClickEvent):
         print("Clicked: acelerar_btn")
