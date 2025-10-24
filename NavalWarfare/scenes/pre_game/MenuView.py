@@ -110,10 +110,10 @@ class MenuView(arcade.View):
         print("Clicked: jugar_btn")
         storage_utils.execute_sound("button_sound0.mp3")
         self.uimanager.clear()
-        from scenes.mid_game.GameView import GameView
-        game_view = GameView(selected_warship=self.selected_warship, enemy_warship=self.enemy_warship)
-        game_view.setup()
-        self.window.show_view(game_view)
+        from scenes.mid_game.GamePreparation import GamePreparation
+        game_preparation = GamePreparation(selected_warship=self.selected_warship, enemy_warship=self.enemy_warship)
+        game_preparation.setup()
+        self.window.show_view(game_preparation)
 
     def on_click_select_ship(self, event: arcade.gui.UIOnClickEvent):
         print("Clicked: select_ship_btn")
