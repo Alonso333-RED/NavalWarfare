@@ -1,6 +1,6 @@
 class Warship:
     def __init__(self, name: str, max_integrity: int, max_damage: int, min_damage_factor: float,
-                acurrancy: int, max_speed: int, acelleration: int, desacelleration: int,
+                acurrancy: int, max_speed: int, acceleration: int, desacceleration: int,
                 ammo_storage: int, reload_time: int, bullets_per_shot: int, bullets_per_reload: int,
                 repair: int, default_sprite: str, damaged_sprite: str = None, repaired_sprite: str = None):
         self.name = name
@@ -12,8 +12,8 @@ class Warship:
         self.acurrancy = acurrancy #Weapon_max_range{km}
         self.max_speed = max_speed #(km/h)/class_asc{+0.5}
         self.current_speed = 0
-        self.acelleration = acelleration #original_max-speed/(class_acs+3)
-        self.desacelleration = desacelleration #acceleration/(class__decs{-0.5})
+        self.acceleration = acceleration #original_max-speed/(class_acs+3)
+        self.desacceleration = desacceleration #acceleration/(class__decs{-0.5})
         self.ammo_storage = ammo_storage #total_cannons
         self.current_ammo = 0
         self.reload_time = reload_time #{real-life}/10
@@ -33,8 +33,8 @@ class Warship:
             "min_damage_factor": self.min_damage_factor,
             "acurrancy": self.acurrancy,
             "max_speed": self.max_speed,
-            "acelleration": self.acelleration,
-            "desacelleration": self.desacelleration,
+            "acceleration": self.acceleration,
+            "desacceleration": self.desacceleration,
             "ammo_storage": self.ammo_storage,
             "reload_time": self.reload_time,
             "bullets_per_shot": self.bullets_per_shot,
@@ -53,8 +53,8 @@ class Warship:
         printing.append(f"Daño Mínimo: {self.min_damage}\n")
         printing.append(f"Precisión: {self.acurrancy}\n")
         printing.append(f"Velocidad: {self.max_speed}\n")
-        printing.append(f"Aceleración: {self.acelleration}\n")
-        printing.append(f"Desaceleración: {self.desacelleration}\n")
+        printing.append(f"Aceleración: {self.acceleration}\n")
+        printing.append(f"Desaceleración: {self.desacceleration}\n")
         printing.append(f"Munición: {self.ammo_storage}\n")
         printing.append(f"Tiempo de Recarga: {self.reload_time}\n")
         printing.append(f"Balas por Disparo: {self.bullets_per_shot}\n")

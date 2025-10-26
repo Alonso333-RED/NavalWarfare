@@ -55,6 +55,8 @@ class GamePreparation(arcade.View):
         )
         self.uimanager.add(self.anchor_layout)
 
+        self.enemy.warship.current_speed = self.enemy.warship.max_speed
+
     def setup(self):
         pass
 
@@ -69,6 +71,7 @@ class GamePreparation(arcade.View):
     def on_click_empezar(self, event: arcade.gui.UIOnClickEvent):
         print("Clicked: empezar_btn")
         storage_utils.execute_sound("button_sound0.mp3")
+        self.clear()
         self.uimanager.clear()
         from scenes.mid_game.PlayerTurnView import PlayerTurnView
         player_turn = PlayerTurnView(self.player, self.enemy, self.background)
