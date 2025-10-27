@@ -9,7 +9,7 @@ class Warship:
         self.max_damage = max_damage #((caliber_cannon{mm})*turret_cannons)
         self.min_damage_factor = min_damage_factor #1/turret_cannons
         self.min_damage = min(round(max_damage * max(0, min(1, min_damage_factor))), max_damage)
-        self.acurrancy = acurrancy #Weapon_max_range{km}
+        self.acurrancy = acurrancy #Weapon_max_range{km}*class_asc{+1}
         self.max_speed = max_speed #(km/h)/class_asc{+0.5}
         self.current_speed = 0
         self.acceleration = acceleration #original_max-speed/(class_acs+3)

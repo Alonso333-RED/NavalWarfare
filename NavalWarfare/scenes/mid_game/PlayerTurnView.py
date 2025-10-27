@@ -25,6 +25,8 @@ class PlayerTurnView(arcade.View):
         self.background = background
         self.timer = 0
         self.waiting_for_enemy = False
+        self.player_damage_opportunity = round(midgame_utils.roll_damage_opportunity(), 2)
+        self.enemy_damage_opportunity = round(midgame_utils.roll_damage_opportunity(), 2)
 
         self.bg_sprite_list = arcade.SpriteList()
         self.background.center_x = (WINDOW_WIDTH / 2)
@@ -34,6 +36,8 @@ class PlayerTurnView(arcade.View):
 
         self.player_sprite_list = self.player.load_sprite_list()
         self.enemy_sprite_list = self.enemy.load_sprite_list()
+
+        storage_utils.execute_sound("dirty_siren.mp3")
 
         #Botones
         btn_atacar = arcade.gui.UIFlatButton(text="Atacar", width=70, height=70)
@@ -62,6 +66,97 @@ class PlayerTurnView(arcade.View):
         )
         self.uimanager.add(self.anchor_layout)
 
+        # Textos
+        self.player_damage_opportunity_text = arcade.Text(
+            f"{self.player_damage_opportunity}",
+        (WINDOW_WIDTH / 2)-135, (WINDOW_HEIGHT / 2)+30,
+        color=arcade.color.WHITE,
+        font_size=12,
+        anchor_x="center",
+        anchor_y="center",
+        multiline=True,
+        width=300 
+        )
+
+        self.player_ammo_text = arcade.Text(
+            f"{self.player.warship.current_ammo}/{self.player.warship.ammo_storage}",
+        (WINDOW_WIDTH / 2)-135, (WINDOW_HEIGHT / 2)-40,
+        color=arcade.color.WHITE,
+        font_size=12,
+        anchor_x="center",
+        anchor_y="center",
+        multiline=True,
+        width=300 
+        )
+
+        self.player_speed_text = arcade.Text(
+            f"{self.player.warship.current_speed}/{self.player.warship.max_speed}",
+        (WINDOW_WIDTH / 2)-135, (WINDOW_HEIGHT / 2)-110,
+        color=arcade.color.WHITE,
+        font_size=12,
+        anchor_x="center",
+        anchor_y="center",
+        multiline=True,
+        width=300 
+        )
+
+        self.player_integrity_text = arcade.Text(
+            f"{self.player.warship.current_integrity}/{self.player.warship.max_integrity}",
+        (WINDOW_WIDTH / 2)-135, (WINDOW_HEIGHT / 2)-180,
+        color=arcade.color.WHITE,
+        font_size=12,
+        anchor_x="center",
+        anchor_y="center",
+        multiline=True,
+        width=300 
+        )
+
+        self.enemy_damage_opportunity_text = arcade.Text(
+            f"{self.enemy_damage_opportunity}",
+        (WINDOW_WIDTH / 2)+435, (WINDOW_HEIGHT / 2) + 200,
+        color=arcade.color.WHITE,
+        font_size=12,
+        anchor_x="center",
+        anchor_y="center",
+        multiline=True,
+        width=300 
+        )
+
+        self.enemy_ammo_text = arcade.Text(
+            f"{self.enemy.warship.current_ammo}/{self.enemy.warship.ammo_storage}",
+        (WINDOW_WIDTH / 2+435), (WINDOW_HEIGHT / 2)+175,
+        color=arcade.color.WHITE,
+        font_size=12,
+        anchor_x="center",
+        anchor_y="center",
+        multiline=True,
+        width=300 
+        )
+
+        self.enemy_speed_text = arcade.Text(
+            f"{self.enemy.warship.current_speed}/{self.enemy.warship.max_speed}",
+        (WINDOW_WIDTH / 2+435), (WINDOW_HEIGHT / 2)+150,
+        color=arcade.color.WHITE,
+        font_size=12,
+        anchor_x="center",
+        anchor_y="center",
+        multiline=True,
+        width=300 
+        )
+
+        self.enemy_integrity_text = arcade.Text(
+            f"{self.enemy.warship.current_integrity}/{self.enemy.warship.max_integrity}",
+        (WINDOW_WIDTH / 2+435), (WINDOW_HEIGHT / 2)+125,
+        color=arcade.color.WHITE,
+        font_size=12,
+        anchor_x="center",
+        anchor_y="center",
+        multiline=True,
+        width=300 
+        )
+
+        #self.player.warship.current_integrity = 1
+
     def setup(self):
         pass
 
@@ -71,6 +166,7 @@ class PlayerTurnView(arcade.View):
         self.player_sprite_list.draw()
         self.enemy_sprite_list.draw()
         self.uimanager.draw()
+        self.draw_hud()
 
     def on_update(self, delta_time):
         if self.waiting_for_enemy:
@@ -78,8 +174,41 @@ class PlayerTurnView(arcade.View):
             if self.timer >= 1.0:
                 self.waiting_for_enemy = False
                 self.timer = 0
+                if self.enemy.warship.current_integrity <= 0:
+                    self.goto_game_over(True)
                 midgame_utils.reset_ship_sprite_list(self.player_sprite_list)
                 midgame_utils.reset_ship_sprite_list(self.enemy_sprite_list)
+                self.enemy_turn()
+                if self.player.warship.current_integrity <= 0:
+                    self.goto_game_over(False)
+                self.player_damage_opportunity = round(midgame_utils.roll_damage_opportunity(), 2)
+                self.enemy_damage_opportunity = round(midgame_utils.roll_damage_opportunity(), 2)
+
+    def draw_hud(self):
+
+        self.player_damage_opportunity_text.text = f"{self.player_damage_opportunity}"
+        self.player_damage_opportunity_text.draw()
+
+        self.player_ammo_text.text = f"{self.player.warship.current_ammo}/{self.player.warship.ammo_storage}"
+        self.player_ammo_text.draw()
+
+        self.player_speed_text.text = f"{self.player.warship.current_speed}/{self.player.warship.max_speed}"
+        self.player_speed_text.draw()
+
+        self.player_integrity_text.text = f"{self.player.warship.current_integrity}/{self.player.warship.max_integrity}"
+        self.player_integrity_text.draw()
+
+        self.enemy_damage_opportunity_text.text = f"{self.enemy_damage_opportunity}"
+        self.enemy_damage_opportunity_text.draw()
+
+        self.enemy_ammo_text.text = f"{self.enemy.warship.current_ammo}/{self.enemy.warship.ammo_storage}"
+        self.enemy_ammo_text.draw()
+
+        self.enemy_speed_text.text = f"{self.enemy.warship.current_speed}/{self.enemy.warship.max_speed}"
+        self.enemy_speed_text.draw()
+
+        self.enemy_integrity_text.text = f"{self.enemy.warship.current_integrity}/{self.enemy.warship.max_integrity}"
+        self.enemy_integrity_text.draw()
 
     def on_click_atacar(self, event: arcade.gui.UIOnClickEvent):
         print("Clicked: atacar_btn")
@@ -88,14 +217,11 @@ class PlayerTurnView(arcade.View):
             return
         if (self.player.warship.current_ammo < self.player.warship.bullets_per_shot):
             storage_utils.execute_sound("weapon_empty.mp3")
-            debug_utils.print_warship_current_state(self.player.warship)
+            #debug_utils.print_warship_current_state(self.player.warship)
             return
-        storage_utils.execute_sound("weapon_shoot.mp3")
-        self.player.warship.current_ammo -= self.player.warship.bullets_per_shot
-        midgame_utils.desacelerate(self.player)
-        debug_utils.print_warship_current_state(self.player.warship)  
-        midgame_utils.attack(self.player, self.enemy, self.enemy_sprite_list)
-        debug_utils.print_warship_current_state(self.enemy.warship)  
+        #debug_utils.print_warship_current_state(self.player.warship)  
+        midgame_utils.attack(self.player, self.enemy, self.enemy_sprite_list, self.player_damage_opportunity)
+        #debug_utils.print_warship_current_state(self.enemy.warship)  
         self.waiting_for_enemy = True
         self.timer = 0
 
@@ -107,15 +233,11 @@ class PlayerTurnView(arcade.View):
         if self.player.warship.current_ammo >= self.player.warship.ammo_storage:
             self.player.warship.current_ammo = self.player.warship.ammo_storage
             storage_utils.execute_sound("button_sound1.mp3")
-            debug_utils.print_warship_current_state(self.player.warship)
+            #debug_utils.print_warship_current_state(self.player.warship)
             return
-        self.player.warship.current_ammo += self.player.warship.bullets_per_reload
-        if self.player.warship.current_ammo >= self.player.warship.ammo_storage:
-            self.player.warship.current_ammo = self.player.warship.ammo_storage
-        storage_utils.execute_sound("weapon_reload.mp3")
-        midgame_utils.desacelerate(self.player)
-        debug_utils.substract_integrity(self.player.warship)
-        debug_utils.print_warship_current_state(self.player.warship)
+        midgame_utils.reload(self.player)
+        #debug_utils.substract_integrity(self.player.warship)
+        #debug_utils.print_warship_current_state(self.player.warship)
         self.waiting_for_enemy = True
         self.timer = 0
 
@@ -126,13 +248,10 @@ class PlayerTurnView(arcade.View):
             return
         if self.player.warship.current_speed == self.player.warship.max_speed:
             storage_utils.execute_sound("button_sound1.mp3")
-            debug_utils.print_warship_current_state(self.player.warship)
+            #debug_utils.print_warship_current_state(self.player.warship)
             return
-        self.player.warship.current_speed += self.player.warship.acceleration
-        if self.player.warship.current_speed >= self.player.warship.max_speed:
-            self.player.warship.current_speed = self.player.warship.max_speed
-        storage_utils.execute_sound("acceleration.mp3")
-        debug_utils.print_warship_current_state(self.player.warship)
+        midgame_utils.accelerate(self.player)
+        #debug_utils.print_warship_current_state(self.player.warship)
         self.waiting_for_enemy = True
         self.timer = 0
 
@@ -143,15 +262,37 @@ class PlayerTurnView(arcade.View):
             return
         if self.player.warship.current_integrity == self.player.warship.max_integrity:
             storage_utils.execute_sound("button_sound1.mp3")
-            debug_utils.print_warship_current_state(self.player.warship)
+            #debug_utils.print_warship_current_state(self.player.warship)
             return
-        self.player.warship.current_integrity += random.randint(0, self.player.warship.repair)
-        if self.player.warship.current_integrity >= self.player.warship.max_integrity:
-            self.player.warship.current_integrity = self.player.warship.max_integrity
-        storage_utils.execute_sound("repair.mp3")
-        self.player_sprite_list[0].visible = False
-        self.player_sprite_list[2].visible = True
-        debug_utils.print_warship_current_state(self.player.warship)
+        midgame_utils.repair(self.player, self.player_sprite_list)
+        #debug_utils.print_warship_current_state(self.player.warship)
         self.waiting_for_enemy = True
         self.timer = 0
-        
+
+    def enemy_turn(self):
+        decision_pool = ["attack", "reload", "accelerate", "repair"]
+        decision = random.choice(decision_pool)
+        decided = False
+        while not decided:
+            if (decision == "attack") and (self.enemy.warship.current_ammo >= self.enemy.warship.bullets_per_shot):
+                midgame_utils.attack(self.enemy, self.player, self.player_sprite_list, self.enemy_damage_opportunity)
+                decided = True
+            elif (decision == "reload") and (self.enemy.warship.current_ammo < self.enemy.warship.ammo_storage):
+                midgame_utils.reload(self.enemy)
+                decided = True
+            elif (decision == "accelerate") and (self.enemy.warship.current_speed < self.enemy.warship.max_speed):
+                midgame_utils.accelerate(self.enemy)
+                decided = True
+            elif (decision == "repair") and (self.enemy.warship.current_integrity < self.enemy.warship.max_integrity):
+                midgame_utils.repair(self.enemy, self.enemy_sprite_list)
+                decided = True
+            else:
+                decision = random.choice(decision_pool)
+
+    def goto_game_over(self, player_wins: bool):
+        self.clear()
+        self.uimanager.clear()
+        from scenes.pos_game.GameOverView import GameOverView
+        game_over_view = GameOverView(player_wins, self.player, self.enemy, self.background)
+        game_over_view.setup()
+        self.window.show_view(game_over_view)

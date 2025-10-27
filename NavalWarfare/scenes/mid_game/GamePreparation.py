@@ -1,5 +1,3 @@
-import random
-import time
 import arcade
 from arcade.gui import UIManager
 import config
@@ -54,8 +52,6 @@ class GamePreparation(arcade.View):
             align_y=-75
         )
         self.uimanager.add(self.anchor_layout)
-
-        self.enemy.warship.current_speed = self.enemy.warship.max_speed
 
     def setup(self):
         pass

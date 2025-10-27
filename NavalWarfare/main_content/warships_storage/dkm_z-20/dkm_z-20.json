@@ -1,8 +1,8 @@
 {
     "acceleration": 17,
-    "acurrancy": 8,
+    "acurrancy": 48,
     "ammo_storage": 5,
-    "bullets_per_reload": 3,
+    "bullets_per_reload": 1,
     "bullets_per_shot": 1,
     "damaged_sprite": "NavalWarfare/main_content/warships_storage/dkm_z-20/dkm_z-20_damaged.png",
     "default_sprite": "NavalWarfare/main_content/warships_storage/dkm_z-20/dkm_z-20_default.png",

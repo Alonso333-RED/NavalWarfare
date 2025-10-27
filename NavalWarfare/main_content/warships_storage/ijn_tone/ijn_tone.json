@@ -1,6 +1,6 @@
 {
     "acceleration": 13,
-    "acurrancy": 16,
+    "acurrancy": 64,
     "ammo_storage": 8,
     "bullets_per_reload": 2,
     "bullets_per_shot": 2,

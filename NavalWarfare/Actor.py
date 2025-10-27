@@ -16,12 +16,14 @@ class Actor:
         self.is_enemy = is_enemy
 
     def sprite_ubicate(self, sprite: arcade.Sprite):
+        
         if self.is_enemy:
-            sprite.center_x = (WINDOW_WIDTH // 2)
+            sprite.center_x = (WINDOW_WIDTH // 2) - 80
             sprite.center_y = (WINDOW_HEIGHT // 2) + 200
         else:
-            sprite.center_x = (WINDOW_WIDTH // 2)
+            sprite.center_x = (WINDOW_WIDTH // 2) + 75
             sprite.center_y = (WINDOW_HEIGHT // 2) - 200
+
 
     def load_sprite(self, sprite_route: str):
         sprite_route = storage_utils.load_file(f"{sprite_route}")
