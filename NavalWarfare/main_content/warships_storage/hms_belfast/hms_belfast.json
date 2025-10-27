@@ -7,7 +7,7 @@
     "damaged_sprite": "NavalWarfare/main_content/warships_storage/hms_belfast/hms_belfast_damaged.png",
     "default_sprite": "NavalWarfare/main_content/warships_storage/hms_belfast/hms_belfast_default.png",
     "desacceleration": 4,
-    "max_damage": 456,
+    "max_damage": 912,
     "max_integrity": 1444,
     "max_speed": 39,
     "min_damage_factor": 0.33,

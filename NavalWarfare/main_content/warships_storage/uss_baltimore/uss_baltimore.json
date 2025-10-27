@@ -7,7 +7,7 @@
     "damaged_sprite": "NavalWarfare/main_content/warships_storage/uss_baltimore/uss_baltimore_damaged.png",
     "default_sprite": "NavalWarfare/main_content/warships_storage/uss_baltimore/uss_baltimore_default.png",
     "desacceleration": 5,
-    "max_damage": 609,
+    "max_damage": 1218,
     "max_integrity": 1771,
     "max_speed": 41,
     "min_damage_factor": 0.33,

@@ -7,7 +7,7 @@
     "damaged_sprite": "NavalWarfare/main_content/warships_storage/dkm_prinz_eugen/dkm_prinz_eugen_damaged.png",
     "default_sprite": "NavalWarfare/main_content/warships_storage/dkm_prinz_eugen/dkm_prinz_eugen_default.png",
     "desacceleration": 5,
-    "max_damage": 406,
+    "max_damage": 812,
     "max_integrity": 1803,
     "max_speed": 39,
     "min_damage_factor": 0.5,

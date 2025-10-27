@@ -35,7 +35,7 @@ class GamePreparation(arcade.View):
             f"{self.player.warship.name} V/S {self.enemy.warship.name}",
             WINDOW_WIDTH // 2, (WINDOW_HEIGHT // 2),
             color=arcade.color.WHITE,
-            font_size=40,
+            font_size=20,
             anchor_x="center",
             anchor_y="center"
         )

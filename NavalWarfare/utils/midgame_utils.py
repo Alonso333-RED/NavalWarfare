@@ -60,11 +60,11 @@ def roll_damage_opportunity():
     roll = random.random()
 
     if roll < (1/16): 
-        return random.uniform(4, 5)
-    elif roll < (1/8):
-        return random.uniform(2, 3)
-    elif roll < (1/4):
         return random.uniform(1, 2)
+    elif roll < (1/8):
+        return random.uniform(1, 1.5)
+    elif roll < (1/4):
+        return random.uniform(1, 1.25)
     else:
         return random.uniform(1, 1)
 

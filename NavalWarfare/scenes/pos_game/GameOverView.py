@@ -34,9 +34,15 @@ class GameOverView(arcade.View):
         if self.player_wins:
             result_text = "¡Victoria!"
             storage_utils.execute_sound("victory.mp3")
+            self.enemy_sprite_list[0].visible = False
+            self.enemy_sprite_list[1].visible = False
+            self.enemy_sprite_list[2].visible = False
         else:
             result_text = "¡Derrota!"
             storage_utils.execute_sound("game_over.mp3")
+            self.player_sprite_list[0].visible = False
+            self.player_sprite_list[1].visible = False
+            self.player_sprite_list[2].visible = False
 
         self.label0 = arcade.Text(
             f"{result_text}",

@@ -6,7 +6,7 @@ class Warship:
         self.name = name
         self.max_integrity = max_integrity # (Lenght * Sleeve)/class_asc{+1.5}
         self.current_integrity = max_integrity
-        self.max_damage = max_damage #((caliber_cannon{mm})*turret_cannons)
+        self.max_damage = max_damage #((caliber_cannon{mm})*turret_cannons)*class_desc{-1}
         self.min_damage_factor = min_damage_factor #1/turret_cannons
         self.min_damage = min(round(max_damage * max(0, min(1, min_damage_factor))), max_damage)
         self.acurrancy = acurrancy #Weapon_max_range{km}*class_asc{+1}

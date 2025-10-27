@@ -7,7 +7,7 @@
     "damaged_sprite": "NavalWarfare/main_content/warships_storage/ijn_yukikaze/ijn_yukikaze_damaged.png",
     "default_sprite": "NavalWarfare/main_content/warships_storage/ijn_yukikaze/ijn_yukikaze_default.png",
     "desacceleration": 5,
-    "max_damage": 254,
+    "max_damage": 762,
     "max_integrity": 1280,
     "max_speed": 65,
     "min_damage_factor": 0.5,
